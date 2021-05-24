@@ -207,7 +207,7 @@
             </x-jet-secondary-button>
 
             <x-jet-button class="ml-2" wire:click="updateRole" wire:loading.attr="disabled">
-                {{ __(messages.Save') }}
+                {{ __('messages.Save') }}
             </x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>

@@ -43,7 +43,7 @@
             </x-jet-action-message>
 
             <x-jet-button>
-                {{ __(messages.Save') }}
+                {{__('messages.Save') }}
             </x-jet-button>
         </x-slot>
     @endif
