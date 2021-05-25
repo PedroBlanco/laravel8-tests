@@ -18,6 +18,7 @@
                 <x-jet-label for="email" value="{{ __('messages.Email') }}" />
                 <x-input-email id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                 :domains="'('.implode('|',config('misc.valid_register_domains',[''])).')'" />
+                {{-- <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required /> --}}
             </div>
 
             <div class="mt-4">
