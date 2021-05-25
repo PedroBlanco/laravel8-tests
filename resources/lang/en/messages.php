@@ -33,4 +33,5 @@ return [
     'use_authentication_code' => 'Use an authentication code',
     'recovery_code' => 'Recovery Code',
     'use_recovery_code' => 'Use a recovery code',
+    'invalid_register_domain' => 'Domain not valid for registration.',
 ];

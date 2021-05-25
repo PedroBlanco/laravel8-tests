@@ -33,4 +33,5 @@ return [
     'use_authentication_code' => 'Usar un código de autenticación',
     'recovery_code' => 'Código de recuperación',
     'use_recovery_code' => 'Usar un código de recuperación',
+    'invalid_register_domain' => 'Dominio no válido para registrarse.',
 ];
