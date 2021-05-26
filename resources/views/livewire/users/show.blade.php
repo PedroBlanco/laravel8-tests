@@ -28,7 +28,7 @@
                 <td class="border px-4 py-2">{{ $user->id }}</td>
                 <td class="border px-4 py-2">{{ $user->name }}</td>
                 <td class="border px-4 py-2">{{ $user->email }}</td>
-                <td class="border px-4 py-2">{{ $user->role()->get()->first()->nombre }}</td>
+                <td class="border px-4 py-2">{{ $user->role()->get()->first() ? $user->role()->get()->first()->nombre : 'Sin rol asignado' }}</td>
             </tr>
             @endforeach
         </tbody>

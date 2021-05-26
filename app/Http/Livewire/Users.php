@@ -9,12 +9,6 @@ use App\Models\Role;
 class Users extends Component
 {
     public $users, $roles;
-    public $texto = 'IDiota';
-
-    // public function mount($users)
-    // {
-    //     $this->users = $users;
-    // }
 
     public function render()
     {
