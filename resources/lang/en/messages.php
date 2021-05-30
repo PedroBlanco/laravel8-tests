@@ -36,4 +36,5 @@ return [
     'invalid_register_domain' => 'Domain not valid for registration.',
     'Users' => 'Users',
     'Role' => 'Role',
+    'Actions' => 'Actions',
 ];
