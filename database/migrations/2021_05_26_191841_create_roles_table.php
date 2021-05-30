@@ -15,7 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-			$table->string('nombre', 100);
+			$table->string('nombre', 100)->unique();
 			$table->text('descripcion');
             $table->timestamps();
         });
@@ -34,6 +34,7 @@ class CreateRolesTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['role_id']);
             $table->dropColumn('role_id');
         });
 

@@ -16,10 +16,11 @@
     <table class="table-fixed w-full">
         <thead>
             <tr class="bg-gray-100">
-                <th class="px-4 py-2 w-20">Id</th>
+                <th class="px-4 py-2 w-10">Id</th>
                 <th class="px-4 py-2">{{ __('messages.Name')}}</th>
                 <th class="px-4 py-2">{{ __('messages.Email')}}</th>
                 <th class="px-4 py-2">{{ __('messages.Role')}}</th>
+                <th class="px-4 py-2 w-20">{{ __('messages.Actions')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,11 @@
                 <td class="border px-4 py-2">{{ $user->name }}</td>
                 <td class="border px-4 py-2">{{ $user->email }}</td>
                 <td class="border px-4 py-2">{{ $user->role()->get()->first() ? $user->role()->get()->first()->nombre : 'Sin rol asignado' }}</td>
+                <td class="border px-4 py-2">
+                    <a href=""><x-fluentui-person-info-16 class="h-6 w-6" /></a>
+                    <a href=""><x-fluentui-person-settings-16 class="h-6 w-6" /></a>
+                    <a href=""><x-fluentui-person-delete-16 class="h-6 w-6" /></a>
+                </td>
             </tr>
             @endforeach
         </tbody>
