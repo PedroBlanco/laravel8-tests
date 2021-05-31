@@ -15,9 +15,13 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('messages.Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('livewire.users') }}" :active="request()->routeIs('livewire.users')">
-                        {{ __('messages.Users') }}
-                    </x-jet-nav-link>
+                    {{-- @if ( (null !== auth()->user()->role()->first()) && ((auth()->user()->role()->first()->nombre == 'Administrador') || (auth()->user()->role()->first()->nombre == 'SuperAdministrador')) ) --}}
+                    @can('show-users')
+                        <x-jet-nav-link href="{{ route('livewire.users') }}" :active="request()->routeIs('livewire.users')">
+                            {{ __('messages.Users') }}
+                        </x-jet-nav-link>
+                    @endcan
+                    {{-- @endif --}}
                 </div>
             </div>
 
@@ -172,6 +176,12 @@
                         {{ __('messages.API_Tokens') }}
                     </x-jet-responsive-nav-link>
                 @endif
+
+                @can('show-users')
+                    <x-jet-responsive-nav-link href="{{ route('livewire.users') }}" :active="request()->routeIs('livewire.users')">
+                        {{ __('messages.Users') }}
+                    </x-jet-responsive-nav-link>
+                @endcan
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

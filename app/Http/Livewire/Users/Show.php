@@ -6,8 +6,12 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Role;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 class Show extends Component
 {
+    use AuthorizesRequests;
+
     public $users;
 
     public function mount (
@@ -21,6 +25,8 @@ class Show extends Component
 
     public function render()
     {
+        $this->authorize('show-users', $this->users);
+
         return view('livewire.users.show');
     }
 }

@@ -26,6 +26,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
 //     return view('livewire.users');
 // })->name('livewire.users');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'role:super', 'prefix' => 'users', 'as' => 'users.'], function () {
+        Route::resource('users', Users::class);
+    });
+    Route::group(['middleware' => 'role:admin', 'prefix' => 'users', 'as' => 'users.'], function () {
+        Route::resource('users', Users::class);
+    });
+});
+
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/users', Users::class)
     ->name('livewire.users');

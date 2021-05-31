@@ -32,8 +32,10 @@
                 <td class="border px-4 py-2">{{ $user->role()->get()->first() ? $user->role()->get()->first()->nombre : 'Sin rol asignado' }}</td>
                 <td class="border px-4 py-2">
                     <a href=""><x-fluentui-person-info-16 class="h-6 w-6" /></a>
-                    <a href=""><x-fluentui-person-settings-16 class="h-6 w-6" /></a>
-                    <a href=""><x-fluentui-person-delete-16 class="h-6 w-6" /></a>
+                    @can('admin-users')
+                        <a href=""><x-fluentui-person-settings-16 class="h-6 w-6" /></a>
+                        <a href=""><x-fluentui-person-delete-16 class="h-6 w-6" /></a>
+                    @endcan
                 </td>
             </tr>
             @endforeach
