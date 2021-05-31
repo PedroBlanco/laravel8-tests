@@ -10,6 +10,7 @@ class Users extends Component
 {
     public $users, $roles;
 
+
     public function render()
     {
         $this->users = User::latest()->get();
