@@ -25,4 +25,5 @@ class RoleSeeder extends Seeder
         ['nombre'],
         ['descripcion']
         );
+    }
 }
