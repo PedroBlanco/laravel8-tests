@@ -15,6 +15,8 @@
 
         @livewireStyles
 
+        @bukStyles
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
@@ -42,5 +44,7 @@
         @stack('modals')
 
         @livewireScripts
+
+        @bukScripts
     </body>
 </html>
