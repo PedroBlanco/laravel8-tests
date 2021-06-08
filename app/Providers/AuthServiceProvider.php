@@ -45,7 +45,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define( 'show-users', function (User $user) {
-            // Se podría hacer un str_contains( $user->role()->first()->nombre, 'Administrador' ), pero no me gusta la idea
+            // Todos los usuarios autenticados (con o sin rol) pueden ver la lista de usuarios
             return ( null !== $user->role()->first() );
         });
     }

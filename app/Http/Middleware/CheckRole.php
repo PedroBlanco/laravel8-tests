@@ -24,7 +24,7 @@ class CheckRole
             abort( 403 );
         }
 
-        if ( ($role == 'Editor') && (auth()->user()->role()->first()->nombre != 'Administrador') ) {
+        if ( ($role == 'editor') && (auth()->user()->role()->first()->nombre != 'Editor') ) {
             abort( 403 );
         }
 

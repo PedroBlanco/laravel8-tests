@@ -50,7 +50,12 @@
                         </select>
                         <x-jet-danger-button class="ml-2" x-bind:disabled="show_{{$user->id}}"
                             {{-- x-bind:value="selected_role_{{$user->id}}" --}}
-                            x-on:click="$wire.changeRole({{$user->id}})"
+                            {{-- x-on:click="$wire.changeRole({{$user->id}})" --}}
+
+                            {{-- wire:click="assignRole({{$user->id}},$wire.selected_role[{{$user->id}}])" --}}
+
+                            x-on:click="alert($wire.selected_role[{{$user->id}}])"
+
                             {{-- x-on:click="$wire.changeRole({{$user->id}},selected_role_{{$user->id}})" --}}
                             >Guardar</x-jet-danger-button>
                         {{-- <x-jet-danger-button class="ml-2" x-bind:disabled="show_{{$user->id}}" wire:click="changeRole">Guardar</x-jet-danger-button> --}}

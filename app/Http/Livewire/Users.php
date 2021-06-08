@@ -20,4 +20,15 @@ class Users extends Component
 
         return view('livewire.users');
     }
+
+    public function assignRole($user_id, $role_id)
+    {
+        // TODO: Comprobar rol del usuario ejecutor
+
+        $temp_user = User::find($user_id);
+
+        $temp_user->role_id = $role_id;
+
+        $temp_user->save();
+    }
 }
