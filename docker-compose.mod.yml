@@ -1,0 +1,338 @@
+version: '3.5'
+
+# 2021-06-110
+# PRODUCCION- Se van a arrancar los servicios:
+# nginx mariadb php-fpm adminer workspace
+
+networks:
+  frontend:
+    driver: 
+  backend:
+    driver: 
+
+volumes:
+  mariadb:
+    driver: 
+# 2021-04-14 Añadido por sugerencia de https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
+  mariadb_data:
+    driver: 
+  adminer:
+    driver: 
+
+services:
+
+  ### Workspace Utilities ##################################
+    workspace:
+      build:
+        context: ./workspace
+        args:
+          - CHANGE_SOURCE=
+          - SHELL_OH_MY_ZSH=
+          - SHELL_OH_MY_ZSH_AUTOSUGESTIONS=
+          - SHELL_OH_MY_ZSH_ALIASES=
+          - UBUNTU_SOURCE=
+          - BASE_IMAGE_TAG_PREFIX=
+          - LARADOCK_PHP_VERSION=
+          - LARADOCK_PHALCON_VERSION=
+          - INSTALL_SUBVERSION=
+          - INSTALL_BZ2=
+          - INSTALL_GMP=
+          - INSTALL_GNUPG=
+          - INSTALL_XDEBUG=
+          - INSTALL_PCOV=
+          - INSTALL_PHPDBG=
+          - INSTALL_BLACKFIRE=
+          - INSTALL_SSH2=
+          - INSTALL_SOAP=
+          - INSTALL_XSL=
+          - INSTALL_LDAP=
+          - INSTALL_SMB=
+          - INSTALL_IMAP=
+          - INSTALL_MONGO=
+          - INSTALL_AMQP=
+          - INSTALL_CASSANDRA=
+          - INSTALL_GEARMAN=
+          - INSTALL_PHPREDIS=
+          - INSTALL_MSSQL=
+          - NVM_NODEJS_ORG_MIRROR=
+          - INSTALL_NODE=
+          - NPM_REGISTRY=
+          - NPM_FETCH_RETRIES=
+          - NPM_FETCH_RETRY_FACTOR=
+          - NPM_FETCH_RETRY_MINTIMEOUT=
+          - NPM_FETCH_RETRY_MAXTIMEOUT=
+          - INSTALL_PNPM=
+          - INSTALL_YARN=
+          - INSTALL_NPM_GULP=
+          - INSTALL_NPM_BOWER=
+          - INSTALL_NPM_VUE_CLI=
+          - INSTALL_NPM_ANGULAR_CLI=
+          - INSTALL_DRUSH=
+          - INSTALL_WP_CLI=
+          - INSTALL_DRUPAL_CONSOLE=
+          - INSTALL_AEROSPIKE=
+          - INSTALL_OCI8=
+          - INSTALL_V8JS=
+          - COMPOSER_GLOBAL_INSTALL=
+          - COMPOSER_VERSION=
+          - COMPOSER_AUTH=
+          - COMPOSER_REPO_PACKAGIST=
+          - INSTALL_WORKSPACE_SSH=
+          - INSTALL_LARAVEL_ENVOY=
+          - INSTALL_LARAVEL_INSTALLER=
+          - INSTALL_DEPLOYER=
+          - INSTALL_PRESTISSIMO=
+          - INSTALL_LINUXBREW=
+          - INSTALL_MC=
+          - INSTALL_SYMFONY=
+          - INSTALL_PYTHON=
+          - INSTALL_PYTHON3=
+          - INSTALL_IMAGE_OPTIMIZERS=
+          - INSTALL_IMAGEMAGICK=
+          - INSTALL_TERRAFORM=
+          - INSTALL_DUSK_DEPS=
+          - INSTALL_PG_CLIENT=
+          - INSTALL_PHALCON=
+          - INSTALL_SWOOLE=
+          - INSTALL_TAINT=
+          - INSTALL_LIBPNG=
+          - INSTALL_GRAPHVIZ=
+          - INSTALL_IONCUBE=
+          - INSTALL_MYSQL_CLIENT=
+          - INSTALL_PING=
+          - INSTALL_SSHPASS=
+          - INSTALL_INOTIFY=
+          - INSTALL_FSWATCH=
+          - INSTALL_AST=
+          - INSTALL_YAML=
+          - INSTALL_RDKAFKA=
+          - INSTALL_MAILPARSE=
+          - INSTALL_GIT_PROMPT=
+          - INSTALL_XMLRPC=
+          - PUID=
+          - PGID=
+          - CHROME_DRIVER_VERSION=
+          - NODE_VERSION=
+          - YARN_VERSION=
+          - DRUSH_VERSION=
+          - AST_VERSION=
+          - IMAGEMAGICK_VERSION=
+          - TZ=
+          - BLACKFIRE_CLIENT_ID=
+          - BLACKFIRE_CLIENT_TOKEN=
+          - INSTALL_POWERLINE=
+          - INSTALL_SUPERVISOR=
+          - INSTALL_FFMPEG=
+          - INSTALL_AUDIOWAVEFORM=
+          - INSTALL_WKHTMLTOPDF=
+          - INSTALL_GNU_PARALLEL=
+          - INSTALL_LNAV=
+          - INSTALL_PROTOC=
+          - INSTALL_PHPDECIMAL=
+          - INSTALL_ZOOKEEPER=
+          - PROTOC_VERSION=
+          - INSTALL_DOCKER_CLIENT=
+          - INSTALL_MEMCACHED=
+          - http_proxy
+          - https_proxy
+          - no_proxy
+      volumes:
+        - :
+        - docker-in-docker:/certs/client
+        - ./php-worker/supervisord.d:/etc/supervisord.d
+      extra_hosts:
+        - "dockerhost:"
+      ports:
+        - ":22"
+        # - ":3000"
+        # - ":3001"
+        # - ":8080"
+        # - ":8000"
+        # - ":4200"
+      tty: true
+      environment:
+        - PHP_IDE_CONFIG=
+        - DOCKER_HOST=tcp://docker-in-docker:2376
+        - DOCKER_TLS_VERIFY=1
+        - DOCKER_TLS_CERTDIR=/certs
+        - DOCKER_CERT_PATH=/certs/client
+      networks:
+        - frontend
+        - backend
+      links:
+        - mariadb
+
+### PHP-FPM ##############################################
+    php-fpm:
+      build:
+        context: ./php-fpm
+        args:
+          - CHANGE_SOURCE=
+          - BASE_IMAGE_TAG_PREFIX=
+          - LARADOCK_PHP_VERSION=
+          - LARADOCK_PHALCON_VERSION=
+          - INSTALL_BZ2=
+          - INSTALL_ENCHANT=
+          - INSTALL_GMP=
+          - INSTALL_GNUPG=
+          - INSTALL_XDEBUG=
+          - INSTALL_PCOV=
+          - INSTALL_PHPDBG=
+          - INSTALL_BLACKFIRE=
+          - INSTALL_SSH2=
+          - INSTALL_SOAP=
+          - INSTALL_XSL=
+          - INSTALL_SMB=
+          - INSTALL_IMAP=
+          - INSTALL_MONGO=
+          - INSTALL_AMQP=
+          - INSTALL_CASSANDRA=
+          - INSTALL_GEARMAN=
+          - INSTALL_MSSQL=
+          - INSTALL_BCMATH=
+          - INSTALL_PHPREDIS=
+          - INSTALL_MEMCACHED=
+          - INSTALL_OPCACHE=
+          - INSTALL_EXIF=
+          - INSTALL_AEROSPIKE=
+          - INSTALL_OCI8=
+          - INSTALL_MYSQLI=
+          - INSTALL_PGSQL=
+          - INSTALL_PG_CLIENT=
+          - INSTALL_POSTGIS=
+          - INSTALL_INTL=
+          - INSTALL_GHOSTSCRIPT=
+          - INSTALL_LDAP=
+          - INSTALL_PHALCON=
+          - INSTALL_SWOOLE=
+          - INSTALL_TAINT=
+          - INSTALL_IMAGE_OPTIMIZERS=
+          - INSTALL_IMAGEMAGICK=
+          - INSTALL_CALENDAR=
+          - INSTALL_FAKETIME=
+          - INSTALL_IONCUBE=
+          - INSTALL_APCU=
+          - INSTALL_CACHETOOL=
+          - INSTALL_YAML=
+          - INSTALL_RDKAFKA=
+          - INSTALL_GETTEXT=
+          - INSTALL_ADDITIONAL_LOCALES=
+          - INSTALL_MYSQL_CLIENT=
+          - INSTALL_PING=
+          - INSTALL_SSHPASS=
+          - INSTALL_MAILPARSE=
+          - INSTALL_PCNTL=
+          - ADDITIONAL_LOCALES=
+          - INSTALL_FFMPEG=
+          - INSTALL_AUDIOWAVEFORM=
+          - INSTALL_WKHTMLTOPDF=
+          - INSTALL_XHPROF=
+          - INSTALL_XMLRPC=
+          - INSTALL_PHPDECIMAL=
+          - INSTALL_ZOOKEEPER=
+          - DOWNGRADE_OPENSSL_TLS_AND_SECLEVEL=
+          - PUID=
+          - PGID=
+          - IMAGEMAGICK_VERSION=
+          - LOCALE=
+          - PHP_FPM_NEW_RELIC=
+          - PHP_FPM_NEW_RELIC_KEY=
+          - PHP_FPM_NEW_RELIC_APP_NAME=
+          - INSTALL_DOCKER_CLIENT=
+          - http_proxy
+          - https_proxy
+          - no_proxy
+      volumes:
+        - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+        - :
+        - docker-in-docker:/certs/client
+      ports:
+        - ":9003"
+      expose:
+        - "9000"
+      extra_hosts:
+        - "dockerhost:"
+      environment:
+        - PHP_IDE_CONFIG=
+        - DOCKER_HOST=tcp://docker-in-docker:2376
+        - DOCKER_TLS_VERIFY=1
+        - DOCKER_TLS_CERTDIR=/certs
+        - DOCKER_CERT_PATH=/certs/client
+        - FAKETIME=
+      depends_on:
+        - workspace
+      networks:
+        - backend
+      links:
+        - mariadb
+
+### NGINX Server #########################################
+    nginx:
+      build:
+        context: ./nginx
+        args:
+          - CHANGE_SOURCE=
+          - PHP_UPSTREAM_CONTAINER=
+          - PHP_UPSTREAM_PORT=
+          - http_proxy
+          - https_proxy
+          - no_proxy
+      volumes:
+        - :
+        - :/var/log/nginx
+        - :/etc/nginx/sites-available
+        - :/etc/nginx/ssl
+      ports:
+        - ":80"
+        - ":443"
+#        - ":81"
+      depends_on:
+        - php-fpm
+      networks:
+        - frontend
+        - backend
+
+### MariaDB ##############################################
+    mariadb:
+      build:
+        context: ./mariadb
+        args:
+          - http_proxy
+          - https_proxy
+          - no_proxy
+          - MARIADB_VERSION=
+      volumes:
+#        - /mariadb:/var/lib/mysql
+# 2021-04-14 Cambiado por sugerencia de https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
+        - mariadb_data:/var/lib/mysql
+        - :/docker-entrypoint-initdb.d
+# 2021-05-13 PRODUCCION - Deshabilitamos el puerto; debería poderse acceder por la red backend
+      # ports:
+      #   - ":3306"
+      environment:
+        - TZ=
+        - MYSQL_DATABASE=
+        - MYSQL_USER=
+        - MYSQL_PASSWORD=
+        - MYSQL_ROOT_PASSWORD=
+      networks:
+        - backend
+
+### Adminer ###########################################
+    adminer:
+      build:
+        context: ./adminer
+        args:
+          - INSTALL_MSSQL=
+      environment:
+          - ADMINER_PLUGINS=
+          - ADMINER_DESIGN=
+          - ADMINER_DEFAULT_SERVER=
+      ports:
+        - ":8080"
+      depends_on:
+        - php-fpm
+      networks:
+        - frontend
+        - backend
+
