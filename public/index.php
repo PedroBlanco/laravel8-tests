@@ -53,3 +53,9 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
+
+//Debugbar::info('Info!');
+
+//Debugbar::addMeasure('now', LARAVEL_START, microtime(true));
+
+die();
