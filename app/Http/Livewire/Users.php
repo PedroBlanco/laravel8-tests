@@ -13,8 +13,8 @@ class Users extends Component
 
     public function render()
     {
-        $this->users = User::latest()->get();
-        $this->roles = Role::latest()->get();
+        $this->users = User::with('role')->get();
+        $this->roles = Role::with('users')->get();
 
         // dd ( $this->roles );
 

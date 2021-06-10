@@ -36,14 +36,14 @@
                         >
                         @csrf
                         <select name="role_{{$user->id}}" id="role_{{$user->id}}"
-                            x-on:change="$wire.selected_role[{{$user->id}}] = this.value; show_{{$user->id}} = false;"
+                            x-on:change="selected_role_{{$user->id}} = this.value; show_{{$user->id}} = false;"
                             {{-- wire:model="selected_role" --}}
                             required>
                             <option value="-1">Sin rol asignado</option>
                             @foreach ($roles as $role)
                             <option value="{{$role->id}}"
                                 @if ( ( null !== $user->role()->get()->first() ) && ( $role->id === $user->role()->first()->id ) )
-                                    selected
+                                    selected x-init="selected_role_{{$user->id}} = {{$role->id}};"
                                 @endif
                                 >{{$role->nombre}}</option>
                             @endforeach
@@ -52,9 +52,9 @@
                             {{-- x-bind:value="selected_role_{{$user->id}}" --}}
                             {{-- x-on:click="$wire.changeRole({{$user->id}})" --}}
 
-                            {{-- wire:click="assignRole({{$user->id}},$wire.selected_role[{{$user->id}}])" --}}
+                            {{-- wire:click="assignRole({{$user->id}},selected_role_{{$user->id}})" --}}
 
-                            x-on:click="alert($wire.selected_role[{{$user->id}}])"
+                            x-on:click="alert(selected_role_{{$user->id}})"
 
                             {{-- x-on:click="$wire.changeRole({{$user->id}},selected_role_{{$user->id}})" --}}
                             >Guardar</x-jet-danger-button>
