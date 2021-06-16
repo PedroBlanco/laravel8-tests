@@ -6,18 +6,18 @@ version: '3.5'
 
 networks:
   frontend:
-    driver: 
+    driver: bridge
   backend:
-    driver: 
+    driver: bridge
 
 volumes:
   mariadb:
-    driver: 
+    driver: local
 # 2021-04-14 Añadido por sugerencia de https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
   mariadb_data:
-    driver: 
+    driver: local
   adminer:
-    driver: 
+    driver: local
 
 services:
 
@@ -26,132 +26,132 @@ services:
       build:
         context: ./workspace
         args:
-          - CHANGE_SOURCE=
-          - SHELL_OH_MY_ZSH=
-          - SHELL_OH_MY_ZSH_AUTOSUGESTIONS=
-          - SHELL_OH_MY_ZSH_ALIASES=
-          - UBUNTU_SOURCE=
-          - BASE_IMAGE_TAG_PREFIX=
-          - LARADOCK_PHP_VERSION=
-          - LARADOCK_PHALCON_VERSION=
-          - INSTALL_SUBVERSION=
-          - INSTALL_BZ2=
-          - INSTALL_GMP=
-          - INSTALL_GNUPG=
-          - INSTALL_XDEBUG=
-          - INSTALL_PCOV=
-          - INSTALL_PHPDBG=
+          - CHANGE_SOURCE=false
+          - SHELL_OH_MY_ZSH=false
+          - SHELL_OH_MY_ZSH_AUTOSUGESTIONS=false
+          - SHELL_OH_MY_ZSH_ALIASES=false
+          - UBUNTU_SOURCE=aliyun
+          - BASE_IMAGE_TAG_PREFIX=latest
+          - LARADOCK_PHP_VERSION=7.4
+          - LARADOCK_PHALCON_VERSION=4.0.5
+          - INSTALL_SUBVERSION=false
+          - INSTALL_BZ2=false
+          - INSTALL_GMP=false
+          - INSTALL_GNUPG=false
+          - INSTALL_XDEBUG=false
+          - INSTALL_PCOV=false
+          - INSTALL_PHPDBG=false
           - INSTALL_BLACKFIRE=
-          - INSTALL_SSH2=
-          - INSTALL_SOAP=
-          - INSTALL_XSL=
-          - INSTALL_LDAP=
-          - INSTALL_SMB=
-          - INSTALL_IMAP=
-          - INSTALL_MONGO=
-          - INSTALL_AMQP=
-          - INSTALL_CASSANDRA=
-          - INSTALL_GEARMAN=
-          - INSTALL_PHPREDIS=
-          - INSTALL_MSSQL=
+          - INSTALL_SSH2=true
+          - INSTALL_SOAP=false
+          - INSTALL_XSL=false
+          - INSTALL_LDAP=false
+          - INSTALL_SMB=false
+          - INSTALL_IMAP=false
+          - INSTALL_MONGO=false
+          - INSTALL_AMQP=false
+          - INSTALL_CASSANDRA=false
+          - INSTALL_GEARMAN=false
+          - INSTALL_PHPREDIS=true
+          - INSTALL_MSSQL=false
           - NVM_NODEJS_ORG_MIRROR=
-          - INSTALL_NODE=
+          - INSTALL_NODE=true
           - NPM_REGISTRY=
-          - NPM_FETCH_RETRIES=
-          - NPM_FETCH_RETRY_FACTOR=
-          - NPM_FETCH_RETRY_MINTIMEOUT=
-          - NPM_FETCH_RETRY_MAXTIMEOUT=
-          - INSTALL_PNPM=
-          - INSTALL_YARN=
-          - INSTALL_NPM_GULP=
-          - INSTALL_NPM_BOWER=
-          - INSTALL_NPM_VUE_CLI=
-          - INSTALL_NPM_ANGULAR_CLI=
-          - INSTALL_DRUSH=
-          - INSTALL_WP_CLI=
-          - INSTALL_DRUPAL_CONSOLE=
-          - INSTALL_AEROSPIKE=
-          - INSTALL_OCI8=
-          - INSTALL_V8JS=
-          - COMPOSER_GLOBAL_INSTALL=
-          - COMPOSER_VERSION=
-          - COMPOSER_AUTH=
+          - NPM_FETCH_RETRIES=2
+          - NPM_FETCH_RETRY_FACTOR=10
+          - NPM_FETCH_RETRY_MINTIMEOUT=10000
+          - NPM_FETCH_RETRY_MAXTIMEOUT=60000
+          - INSTALL_PNPM=false
+          - INSTALL_YARN=true
+          - INSTALL_NPM_GULP=true
+          - INSTALL_NPM_BOWER=false
+          - INSTALL_NPM_VUE_CLI=true
+          - INSTALL_NPM_ANGULAR_CLI=false
+          - INSTALL_DRUSH=false
+          - INSTALL_WP_CLI=false
+          - INSTALL_DRUPAL_CONSOLE=false
+          - INSTALL_AEROSPIKE=false
+          - INSTALL_OCI8=false
+          - INSTALL_V8JS=false
+          - COMPOSER_GLOBAL_INSTALL=true
+          - COMPOSER_VERSION=2
+          - COMPOSER_AUTH=false
           - COMPOSER_REPO_PACKAGIST=
-          - INSTALL_WORKSPACE_SSH=
-          - INSTALL_LARAVEL_ENVOY=
-          - INSTALL_LARAVEL_INSTALLER=
-          - INSTALL_DEPLOYER=
-          - INSTALL_PRESTISSIMO=
-          - INSTALL_LINUXBREW=
-          - INSTALL_MC=
-          - INSTALL_SYMFONY=
-          - INSTALL_PYTHON=
-          - INSTALL_PYTHON3=
-          - INSTALL_IMAGE_OPTIMIZERS=
-          - INSTALL_IMAGEMAGICK=
-          - INSTALL_TERRAFORM=
-          - INSTALL_DUSK_DEPS=
-          - INSTALL_PG_CLIENT=
-          - INSTALL_PHALCON=
-          - INSTALL_SWOOLE=
-          - INSTALL_TAINT=
-          - INSTALL_LIBPNG=
-          - INSTALL_GRAPHVIZ=
-          - INSTALL_IONCUBE=
-          - INSTALL_MYSQL_CLIENT=
-          - INSTALL_PING=
-          - INSTALL_SSHPASS=
-          - INSTALL_INOTIFY=
-          - INSTALL_FSWATCH=
-          - INSTALL_AST=
-          - INSTALL_YAML=
-          - INSTALL_RDKAFKA=
-          - INSTALL_MAILPARSE=
-          - INSTALL_GIT_PROMPT=
-          - INSTALL_XMLRPC=
-          - PUID=
-          - PGID=
-          - CHROME_DRIVER_VERSION=
-          - NODE_VERSION=
-          - YARN_VERSION=
-          - DRUSH_VERSION=
-          - AST_VERSION=
-          - IMAGEMAGICK_VERSION=
-          - TZ=
+          - INSTALL_WORKSPACE_SSH=true
+          - INSTALL_LARAVEL_ENVOY=false
+          - INSTALL_LARAVEL_INSTALLER=true
+          - INSTALL_DEPLOYER=false
+          - INSTALL_PRESTISSIMO=false
+          - INSTALL_LINUXBREW=false
+          - INSTALL_MC=false
+          - INSTALL_SYMFONY=false
+          - INSTALL_PYTHON=false
+          - INSTALL_PYTHON3=false
+          - INSTALL_IMAGE_OPTIMIZERS=false
+          - INSTALL_IMAGEMAGICK=false
+          - INSTALL_TERRAFORM=false
+          - INSTALL_DUSK_DEPS=false
+          - INSTALL_PG_CLIENT=false
+          - INSTALL_PHALCON=false
+          - INSTALL_SWOOLE=false
+          - INSTALL_TAINT=false
+          - INSTALL_LIBPNG=false
+          - INSTALL_GRAPHVIZ=false
+          - INSTALL_IONCUBE=false
+          - INSTALL_MYSQL_CLIENT=true
+          - INSTALL_PING=false
+          - INSTALL_SSHPASS=false
+          - INSTALL_INOTIFY=false
+          - INSTALL_FSWATCH=false
+          - INSTALL_AST=true
+          - INSTALL_YAML=false
+          - INSTALL_RDKAFKA=false
+          - INSTALL_MAILPARSE=false
+          - INSTALL_GIT_PROMPT=false
+          - INSTALL_XMLRPC=false
+          - PUID=1000
+          - PGID=1000
+          - CHROME_DRIVER_VERSION=2.42
+          - NODE_VERSION=node
+          - YARN_VERSION=latest
+          - DRUSH_VERSION=8.4.6
+          - AST_VERSION=1.0.10
+          - IMAGEMAGICK_VERSION=latest
+          - TZ=UTC
           - BLACKFIRE_CLIENT_ID=
           - BLACKFIRE_CLIENT_TOKEN=
-          - INSTALL_POWERLINE=
-          - INSTALL_SUPERVISOR=
-          - INSTALL_FFMPEG=
-          - INSTALL_AUDIOWAVEFORM=
-          - INSTALL_WKHTMLTOPDF=
-          - INSTALL_GNU_PARALLEL=
-          - INSTALL_LNAV=
-          - INSTALL_PROTOC=
-          - INSTALL_PHPDECIMAL=
-          - INSTALL_ZOOKEEPER=
-          - PROTOC_VERSION=
-          - INSTALL_DOCKER_CLIENT=
-          - INSTALL_MEMCACHED=
+          - INSTALL_POWERLINE=false
+          - INSTALL_SUPERVISOR=false
+          - INSTALL_FFMPEG=false
+          - INSTALL_AUDIOWAVEFORM=false
+          - INSTALL_WKHTMLTOPDF=false
+          - INSTALL_GNU_PARALLEL=false
+          - INSTALL_LNAV=false
+          - INSTALL_PROTOC=false
+          - INSTALL_PHPDECIMAL=false
+          - INSTALL_ZOOKEEPER=false
+          - PROTOC_VERSION=latest
+          - INSTALL_DOCKER_CLIENT=false
+          - INSTALL_MEMCACHED=true
           - http_proxy
           - https_proxy
           - no_proxy
       volumes:
-        - :
+        - ../:/var/www:cached
         - docker-in-docker:/certs/client
         - ./php-worker/supervisord.d:/etc/supervisord.d
       extra_hosts:
-        - "dockerhost:"
+        - "dockerhost:10.0.75.1"
       ports:
-        - ":22"
-        # - ":3000"
-        # - ":3001"
-        # - ":8080"
-        # - ":8000"
-        # - ":4200"
+        - "2222:22"
+        # - "3000:3000"
+        # - "3001:3001"
+        # - "8080:8080"
+        # - "8001:8000"
+        # - "4200:4200"
       tty: true
       environment:
-        - PHP_IDE_CONFIG=
+        - PHP_IDE_CONFIG=serverName=laradock
         - DOCKER_HOST=tcp://docker-in-docker:2376
         - DOCKER_TLS_VERIFY=1
         - DOCKER_TLS_CERTDIR=/certs
@@ -167,98 +167,98 @@ services:
       build:
         context: ./php-fpm
         args:
-          - CHANGE_SOURCE=
-          - BASE_IMAGE_TAG_PREFIX=
-          - LARADOCK_PHP_VERSION=
-          - LARADOCK_PHALCON_VERSION=
-          - INSTALL_BZ2=
-          - INSTALL_ENCHANT=
-          - INSTALL_GMP=
-          - INSTALL_GNUPG=
-          - INSTALL_XDEBUG=
-          - INSTALL_PCOV=
-          - INSTALL_PHPDBG=
+          - CHANGE_SOURCE=false
+          - BASE_IMAGE_TAG_PREFIX=latest
+          - LARADOCK_PHP_VERSION=7.4
+          - LARADOCK_PHALCON_VERSION=4.0.5
+          - INSTALL_BZ2=false
+          - INSTALL_ENCHANT=false
+          - INSTALL_GMP=false
+          - INSTALL_GNUPG=false
+          - INSTALL_XDEBUG=false
+          - INSTALL_PCOV=false
+          - INSTALL_PHPDBG=false
           - INSTALL_BLACKFIRE=
-          - INSTALL_SSH2=
-          - INSTALL_SOAP=
-          - INSTALL_XSL=
-          - INSTALL_SMB=
-          - INSTALL_IMAP=
-          - INSTALL_MONGO=
-          - INSTALL_AMQP=
-          - INSTALL_CASSANDRA=
-          - INSTALL_GEARMAN=
-          - INSTALL_MSSQL=
-          - INSTALL_BCMATH=
-          - INSTALL_PHPREDIS=
-          - INSTALL_MEMCACHED=
-          - INSTALL_OPCACHE=
-          - INSTALL_EXIF=
-          - INSTALL_AEROSPIKE=
-          - INSTALL_OCI8=
-          - INSTALL_MYSQLI=
-          - INSTALL_PGSQL=
-          - INSTALL_PG_CLIENT=
-          - INSTALL_POSTGIS=
-          - INSTALL_INTL=
-          - INSTALL_GHOSTSCRIPT=
-          - INSTALL_LDAP=
-          - INSTALL_PHALCON=
-          - INSTALL_SWOOLE=
-          - INSTALL_TAINT=
-          - INSTALL_IMAGE_OPTIMIZERS=
-          - INSTALL_IMAGEMAGICK=
-          - INSTALL_CALENDAR=
-          - INSTALL_FAKETIME=
-          - INSTALL_IONCUBE=
-          - INSTALL_APCU=
-          - INSTALL_CACHETOOL=
-          - INSTALL_YAML=
-          - INSTALL_RDKAFKA=
-          - INSTALL_GETTEXT=
-          - INSTALL_ADDITIONAL_LOCALES=
-          - INSTALL_MYSQL_CLIENT=
-          - INSTALL_PING=
-          - INSTALL_SSHPASS=
-          - INSTALL_MAILPARSE=
-          - INSTALL_PCNTL=
-          - ADDITIONAL_LOCALES=
-          - INSTALL_FFMPEG=
-          - INSTALL_AUDIOWAVEFORM=
-          - INSTALL_WKHTMLTOPDF=
-          - INSTALL_XHPROF=
-          - INSTALL_XMLRPC=
-          - INSTALL_PHPDECIMAL=
-          - INSTALL_ZOOKEEPER=
-          - DOWNGRADE_OPENSSL_TLS_AND_SECLEVEL=
-          - PUID=
-          - PGID=
-          - IMAGEMAGICK_VERSION=
-          - LOCALE=
-          - PHP_FPM_NEW_RELIC=
-          - PHP_FPM_NEW_RELIC_KEY=
-          - PHP_FPM_NEW_RELIC_APP_NAME=
-          - INSTALL_DOCKER_CLIENT=
+          - INSTALL_SSH2=false
+          - INSTALL_SOAP=false
+          - INSTALL_XSL=false
+          - INSTALL_SMB=false
+          - INSTALL_IMAP=false
+          - INSTALL_MONGO=false
+          - INSTALL_AMQP=false
+          - INSTALL_CASSANDRA=false
+          - INSTALL_GEARMAN=false
+          - INSTALL_MSSQL=false
+          - INSTALL_BCMATH=true
+          - INSTALL_PHPREDIS=true
+          - INSTALL_MEMCACHED=false
+          - INSTALL_OPCACHE=true
+          - INSTALL_EXIF=false
+          - INSTALL_AEROSPIKE=false
+          - INSTALL_OCI8=false
+          - INSTALL_MYSQLI=true
+          - INSTALL_PGSQL=false
+          - INSTALL_PG_CLIENT=false
+          - INSTALL_POSTGIS=false
+          - INSTALL_INTL=true
+          - INSTALL_GHOSTSCRIPT=false
+          - INSTALL_LDAP=false
+          - INSTALL_PHALCON=false
+          - INSTALL_SWOOLE=false
+          - INSTALL_TAINT=false
+          - INSTALL_IMAGE_OPTIMIZERS=true
+          - INSTALL_IMAGEMAGICK=true
+          - INSTALL_CALENDAR=false
+          - INSTALL_FAKETIME=false
+          - INSTALL_IONCUBE=false
+          - INSTALL_APCU=false
+          - INSTALL_CACHETOOL=false
+          - INSTALL_YAML=false
+          - INSTALL_RDKAFKA=false
+          - INSTALL_GETTEXT=false
+          - INSTALL_ADDITIONAL_LOCALES=true
+          - INSTALL_MYSQL_CLIENT=false
+          - INSTALL_PING=false
+          - INSTALL_SSHPASS=false
+          - INSTALL_MAILPARSE=false
+          - INSTALL_PCNTL=false
+          - ADDITIONAL_LOCALES=en_US.UTF-8 es_ES.UTF-8 fr_FR.UTF-8
+          - INSTALL_FFMPEG=false
+          - INSTALL_AUDIOWAVEFORM=false
+          - INSTALL_WKHTMLTOPDF=false
+          - INSTALL_XHPROF=false
+          - INSTALL_XMLRPC=false
+          - INSTALL_PHPDECIMAL=false
+          - INSTALL_ZOOKEEPER=false
+          - DOWNGRADE_OPENSSL_TLS_AND_SECLEVEL=false
+          - PUID=1000
+          - PGID=1000
+          - IMAGEMAGICK_VERSION=latest
+          - LOCALE=POSIX
+          - PHP_FPM_NEW_RELIC=false
+          - PHP_FPM_NEW_RELIC_KEY=0000
+          - PHP_FPM_NEW_RELIC_APP_NAME=app_name
+          - INSTALL_DOCKER_CLIENT=false
           - http_proxy
           - https_proxy
           - no_proxy
       volumes:
-        - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
-        - :
+        - ./php-fpm/php7.4.ini:/usr/local/etc/php/php.ini
+        - ../:/var/www:cached
         - docker-in-docker:/certs/client
       ports:
-        - ":9003"
+        - "9003:9003"
       expose:
         - "9000"
       extra_hosts:
-        - "dockerhost:"
+        - "dockerhost:10.0.75.1"
       environment:
-        - PHP_IDE_CONFIG=
+        - PHP_IDE_CONFIG=serverName=laradock
         - DOCKER_HOST=tcp://docker-in-docker:2376
         - DOCKER_TLS_VERIFY=1
         - DOCKER_TLS_CERTDIR=/certs
         - DOCKER_CERT_PATH=/certs/client
-        - FAKETIME=
+        - FAKETIME=-0
       depends_on:
         - workspace
       networks:
@@ -271,20 +271,20 @@ services:
       build:
         context: ./nginx
         args:
-          - CHANGE_SOURCE=
-          - PHP_UPSTREAM_CONTAINER=
-          - PHP_UPSTREAM_PORT=
+          - CHANGE_SOURCE=false
+          - PHP_UPSTREAM_CONTAINER=php-fpm
+          - PHP_UPSTREAM_PORT=9000
           - http_proxy
           - https_proxy
           - no_proxy
       volumes:
-        - :
-        - :/var/log/nginx
-        - :/etc/nginx/sites-available
-        - :/etc/nginx/ssl
+        - ../:/var/www:cached
+        - ./logs/nginx/:/var/log/nginx
+        - ./nginx/sites/:/etc/nginx/sites-available
+        - ./nginx/ssl/:/etc/nginx/ssl
       ports:
-        - ":80"
-        - ":443"
+        - "80:80"
+        - "443:443"
 #        - ":81"
       depends_on:
         - php-fpm
@@ -300,21 +300,21 @@ services:
           - http_proxy
           - https_proxy
           - no_proxy
-          - MARIADB_VERSION=
+          - MARIADB_VERSION=latest
       volumes:
-#        - /mariadb:/var/lib/mysql
+#        - /home/bitnami/.laradock/data/mariadb:/var/lib/mysql
 # 2021-04-14 Cambiado por sugerencia de https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
         - mariadb_data:/var/lib/mysql
-        - :/docker-entrypoint-initdb.d
+        - ./mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 # 2021-05-13 PRODUCCION - Deshabilitamos el puerto; debería poderse acceder por la red backend
       # ports:
-      #   - ":3306"
+      #   - "3306:3306"
       environment:
-        - TZ=
-        - MYSQL_DATABASE=
-        - MYSQL_USER=
-        - MYSQL_PASSWORD=
-        - MYSQL_ROOT_PASSWORD=
+        - TZ=UTC
+        - MYSQL_DATABASE=default
+        - MYSQL_USER=default
+        - MYSQL_PASSWORD=secret
+        - MYSQL_ROOT_PASSWORD=root
       networks:
         - backend
 
@@ -323,13 +323,13 @@ services:
       build:
         context: ./adminer
         args:
-          - INSTALL_MSSQL=
+          - INSTALL_MSSQL=false
       environment:
           - ADMINER_PLUGINS=
-          - ADMINER_DESIGN=
-          - ADMINER_DEFAULT_SERVER=
+          - ADMINER_DESIGN=pepa-linha
+          - ADMINER_DEFAULT_SERVER=mariadb
       ports:
-        - ":8080"
+        - "8081:8080"
       depends_on:
         - php-fpm
       networks:
