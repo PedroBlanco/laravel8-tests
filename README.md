@@ -1,6 +1,6 @@
 # Laravel8-tests
 
-Este repositorio es una zona para pruebas y experimentos.
+Este repositorio era una zona para pruebas y experimentos, pero al estar en desuso se archiva.
 
 ---
 
